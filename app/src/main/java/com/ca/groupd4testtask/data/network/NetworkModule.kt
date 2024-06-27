@@ -14,7 +14,7 @@ class NetworkModule {
     @Provides
     fun provideApiClient(): ApiClient {
         val retrofit = Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl("https://api.themoviedb.org/3/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

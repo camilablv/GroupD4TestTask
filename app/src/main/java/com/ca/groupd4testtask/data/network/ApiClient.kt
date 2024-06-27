@@ -6,6 +6,6 @@ import retrofit2.http.Query
 
 interface ApiClient {
 
-    @GET("/movie/top_rated")
-    suspend fun topRated(@Query("page") page: Int): TopRatedResponse
+    @GET("movie/top_rated")
+    suspend fun topRated(@Query("page") page: Int, @Query("api_key") apiKey: String): TopRatedResponse
 }

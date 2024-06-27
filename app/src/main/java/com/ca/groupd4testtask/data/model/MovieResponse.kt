@@ -12,5 +12,9 @@ data class MovieResponse(
 )
 
 fun MovieResponse.toMovie() = Movie(
-    id, title, poster, overview, voteAverage
+    id = id,
+    title = title,
+    poster = "https://image.tmdb.org/t/p/w600_and_h900_bestv2$poster",
+    overview = overview,
+    voteAverage = voteAverage
 )

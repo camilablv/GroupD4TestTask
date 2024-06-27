@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface MoviesRepository {
 
-    fun topRatedMovies(): Flow<List<Movie>>
+    suspend fun topRatedMovies(): List<Movie>
 }
