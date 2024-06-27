@@ -1,4 +1,4 @@
-package com.ca.groupd4testtask.ui.theme
+package com.ca.groupd4testtask.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
