@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.ca.groupd4testtask.domain.model.Movie
 import com.ca.groupd4testtask.presentation.conponents.MovieCard
 
@@ -20,11 +21,7 @@ fun MovieListScreen(
 ) {
 
     val viewState = viewModel.viewState.collectAsStateWithLifecycle()
-    val movies = viewState.value.movies
-
-    LaunchedEffect(key1 = true) {
-        viewModel.getMovies()
-    }
+    val movies = viewState.value.movies.collectAsLazyPagingItems()
 
     LazyColumn(
         modifier = Modifier
@@ -32,11 +29,13 @@ fun MovieListScreen(
         contentPadding = PaddingValues(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(movies.size) { index ->
-            MovieCard(
-                movie = movies[index],
-                onClick = { navigateToDetailsScreen(movies[index]) }
-            )
+        items(movies.itemCount) { index ->
+            movies[index]?.let {
+                MovieCard(
+                    movie = it,
+                    onClick = { navigateToDetailsScreen(it) }
+                )
+            }
         }
     }
 }

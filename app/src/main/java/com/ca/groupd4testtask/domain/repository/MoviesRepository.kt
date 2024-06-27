@@ -1,9 +1,10 @@
 package com.ca.groupd4testtask.domain.repository
 
+import androidx.paging.PagingData
 import com.ca.groupd4testtask.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MoviesRepository {
 
-    suspend fun topRatedMovies(): List<Movie>
+    fun topRatedMovies(): Flow<PagingData<Movie>>
 }
